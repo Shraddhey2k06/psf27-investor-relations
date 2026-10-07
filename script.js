@@ -1,9 +1,3 @@
-/*
-  IMPORTANT:
-  Paste your deployed Google Apps Script Web App URL below.
-  Example:
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxkqfxelvy4P-K4cjvU8mOTXeljbIA_nKh4rKguxYcXdLPEc7WvSsaYIoYYXpm0D4w/exec";
-*/
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxkqfxelvy4P-K4cjvU8mOTXeljbIA_nKh4rKguxYcXdLPEc7WvSsaYIoYYXpm0D4w/exec";
 
 const form = document.getElementById("investorForm");
@@ -15,8 +9,7 @@ const retryBtn = document.getElementById("retryBtn");
 
 function showFieldError(id, message) {
   const el = document.getElementById(id);
-  if (!el) return;
-  const error = el.closest("label")?.querySelector(".error");
+  const error = el?.closest("label")?.querySelector(".error");
   if (error) error.textContent = message || "";
 }
 
@@ -42,18 +35,21 @@ function validate() {
 
   required.forEach(([id, msg]) => {
     if (!document.getElementById(id).value.trim()) {
-      showFieldError(id, msg); ok = false;
+      showFieldError(id, msg);
+      ok = false;
     }
   });
 
   const email = document.getElementById("email").value.trim();
-  if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    showFieldError("email", "Please enter a valid email address."); ok = false;
+  if (email && !/^\S+@\S+\.\S+$/.test(email)) {
+    showFieldError("email", "Please enter a valid email address.");
+    ok = false;
   }
 
   const phone = document.getElementById("contact").value;
   if (phone && !validPhone(phone)) {
-    showFieldError("contact", "Please enter a valid contact number."); ok = false;
+    showFieldError("contact", "Please enter a valid contact number.");
+    ok = false;
   }
 
   const day = document.querySelector('input[name="attendanceDay"]:checked');
@@ -77,23 +73,17 @@ function setLoading(loading) {
 }
 
 async function submitForm() {
-  if (!SCRIPT_URL || SCRIPT_URL.includes("PASTE_YOUR")) {
-    throw new Error("The Google Apps Script URL has not been configured yet.");
-  }
-
+  if (!SCRIPT_URL) throw new Error("Submission URL is not configured.");
   const data = Object.fromEntries(new FormData(form).entries());
   data.submittedAt = new Date().toISOString();
   data.source = "PSF27 Investor Relations Website";
 
-  // no-cors is intentionally used because this static GitHub Pages site
-  // posts to Google Apps Script without requiring a server-side proxy.
   await fetch(SCRIPT_URL, {
     method: "POST",
     mode: "no-cors",
     headers: {"Content-Type": "text/plain;charset=utf-8"},
     body: JSON.stringify(data)
   });
-
   return data;
 }
 
@@ -101,7 +91,7 @@ form.addEventListener("submit", async (e) => {
   e.preventDefault();
   if (!validate()) return;
 
-  if (form.website.value.trim() !== "") return; // honeypot
+  if (form.website.value.trim() !== "") return;
 
   setLoading(true);
   errorState.hidden = true;
