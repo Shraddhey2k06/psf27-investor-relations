@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PSF'27 | Investor Confirmation</title>
+  <meta name="description" content="Investor participation confirmation for Pune Startup Fest 2027.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div class="hero-glow"></div>
+      <img src="psf27-logo.png" alt="Pune Startup Fest 2027" class="logo">
+      <div class="eyebrow">INVESTOR RELATIONS</div>
+      <h1>Investor Participation<br><span>Confirmation</span></h1>
+      <p class="hero-subtitle">Pune Startup Fest 2027</p>
+      <div class="event-pill">30–31 JANUARY 2027&nbsp; • &nbsp;COEP TECHNOLOGICAL UNIVERSITY, PUNE</div>
+    </header>
+
+    <main class="content">
+      <section class="intro card">
+        <div class="section-tag">WELCOME</div>
+        <h2>We are pleased to welcome you to PSF'27.</h2>
+        <p>
+          Thank you for confirming your participation as an Investor at Pune Startup Fest 2027.
+          We are pleased to welcome you to the 9th edition of Pune Startup Fest and look forward
+          to your presence at the event.
+        </p>
+        <p>
+          To help us coordinate your participation and ensure a smooth and seamless experience,
+          we kindly request you to provide the following details.
+        </p>
+      </section>
+
+      <section class="form-card card">
+        <div class="form-heading">
+          <div>
+            <div class="section-tag">PARTICIPATION DETAILS</div>
+            <h2>Confirm your presence</h2>
+          </div>
+          <span class="required-note">* Required</span>
+        </div>
+
+        <form id="investorForm" novalidate>
+          <div class="grid two">
+            <label>
+              <span>Full Name <b>*</b></span>
+              <input id="fullName" name="fullName" type="text" placeholder="Enter your full name" required>
+              <small class="error"></small>
+            </label>
+
+            <label>
+              <span>Organisation / Venture / Fund Name <b>*</b></span>
+              <input id="organisation" name="organisation" type="text" placeholder="e.g. ABC Ventures" required>
+              <small class="error"></small>
+            </label>
+
+            <label>
+              <span>Designation / Role <b>*</b></span>
+              <input id="designation" name="designation" type="text" placeholder="e.g. Partner / Investor" required>
+              <small class="error"></small>
+            </label>
+
+            <label>
+              <span>Contact Number <b>*</b></span>
+              <input id="contact" name="contact" type="tel" inputmode="tel" placeholder="+91 98765 43210" required>
+              <small class="error"></small>
+            </label>
+
+            <label>
+              <span>Email Address <b>*</b></span>
+              <input id="email" name="email" type="email" placeholder="name@organisation.com" required>
+              <small class="error"></small>
+            </label>
+
+            <label>
+              <span>LinkedIn Profile <em>(Optional)</em></span>
+              <input id="linkedin" name="linkedin" type="url" placeholder="https://linkedin.com/in/...">
+              <small class="error"></small>
+            </label>
+          </div>
+
+          <div class="attendance-block">
+            <span class="field-title">Preferred Day of Attendance <b>*</b></span>
+            <div class="radio-grid">
+              <label class="radio-option">
+                <input type="radio" name="attendanceDay" value="30 January 2027" required>
+                <span><strong>30 January</strong><small>Day 1</small></span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="attendanceDay" value="31 January 2027">
+                <span><strong>31 January</strong><small>Day 2</small></span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="attendanceDay" value="Both Days">
+                <span><strong>Both Days</strong><small>30 &amp; 31 January</small></span>
+              </label>
+            </div>
+            <small id="attendanceError" class="error"></small>
+          </div>
+
+          <label class="full-width">
+            <span>Any specific requirements / queries <em>(Optional)</em></span>
+            <textarea id="queries" name="queries" rows="4" placeholder="Let us know if there is anything our Investor Relations team should know."></textarea>
+          </label>
+
+          <!-- Honeypot spam field -->
+          <div class="hp" aria-hidden="true">
+            <label>Leave this field empty<input name="website" type="text" tabindex="-1" autocomplete="off"></label>
+          </div>
+
+          <label class="confirm-box">
+            <input id="confirmation" name="confirmation" type="checkbox" required>
+            <span>
+              I confirm that I will attend <strong>Pune Startup Fest 2027</strong> on
+              <strong>30–31 January 2027</strong> and the details provided above are correct.
+            </span>
+          </label>
+          <small id="confirmationError" class="error"></small>
+
+          <button id="submitBtn" type="submit">
+            <span class="btn-text">Confirm Participation</span>
+            <span class="spinner" aria-hidden="true"></span>
+          </button>
+
+          <p class="privacy-note">Your information will be used by the Pune Startup Fest Investor Relations team solely for event coordination and communication.</p>
+        </form>
+
+        <div id="successState" class="success-state" hidden>
+          <div class="success-icon">✓</div>
+          <div class="section-tag">CONFIRMATION RECEIVED</div>
+          <h2>Thank you for confirming!</h2>
+          <p id="successMessage">
+            Thank you for your time and for confirming your participation in Pune Startup Fest 2027.
+          </p>
+          <p>
+            We look forward to welcoming you and having you be a part of the PSF 2027 investor community.
+          </p>
+          <div class="signature">
+            <strong>Best Regards,</strong>
+            Investor Relations Team<br>
+            Pune Startup Fest 2027<br>
+            COEP Technological University
+          </div>
+          <div class="contact-box">
+            <strong>For any queries, please contact:</strong>
+            <p>Shreya Garje | Investor Relations Head | <a href="tel:+919156764064">+91 91567 64064</a></p>
+            <p>Aditya Dhopavkar | Investor Relations Head | <a href="tel:+918180958484">+91 8180958484</a></p>
+          </div>
+        </div>
+
+        <div id="errorState" class="error-state" hidden>
+          <strong>We couldn't submit your confirmation.</strong>
+          <p id="errorMessage">Please check your internet connection and try again.</p>
+          <button type="button" class="secondary-btn" id="retryBtn">Try Again</button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>© 2027 Pune Startup Fest • COEP Technological University</div>
+      <div>Investor Relations</div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
