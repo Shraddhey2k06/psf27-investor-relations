@@ -4,7 +4,7 @@
   Example:
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxkqfxelvy4P-K4cjvU8mOTXeljbIA_nKh4rKguxYcXdLPEc7WvSsaYIoYYXpm0D4w/exec";
 */
-const SCRIPT_URL = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxkqfxelvy4P-K4cjvU8mOTXeljbIA_nKh4rKguxYcXdLPEc7WvSsaYIoYYXpm0D4w/exec";
 
 const form = document.getElementById("investorForm");
 const submitBtn = document.getElementById("submitBtn");
